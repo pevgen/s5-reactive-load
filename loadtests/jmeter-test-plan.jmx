@@ -18,8 +18,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">100</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">650</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">100</stringProp>
+        <stringProp name="ThreadGroup.ramp_time"></stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -98,7 +98,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request POST XML request" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request POST XML request" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -116,7 +116,67 @@
           <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/load/test/xml</stringProp>
+          <stringProp name="HTTPSampler.path">/load/test/xml-request</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request POST XML msg" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;msg&gt;&#xd;
+  &lt;id&gt;id:2018-05-09T10:06:59.809&lt;/id&gt;&#xd;
+  &lt;name&gt;name:2018-05-09T10:06:59.809&lt;/name&gt;&#xd;
+  &lt;field id=&quot;1&quot; value=&quot;0100&quot;/&gt;&#xd;
+  &lt;field id=&quot;2&quot; value=&quot;0adfasdfasdf100&quot;/&gt;&#xd;
+  &lt;field id=&quot;3&quot; value=&quot;0100&quot;/&gt;&#xd;
+  &lt;field id=&quot;4&quot; value=&quot;0adfasdfasdf100&quot;/&gt;&#xd;
+  &lt;field id=&quot;1&quot; value=&quot;0100&quot;/&gt;&#xd;
+  &lt;field id=&quot;5&quot; value=&quot;0adfasdfasdf100&quot;/&gt;&#xd;
+  &lt;field id=&quot;6&quot; value=&quot;0100&quot;/&gt;&#xd;
+  &lt;field id=&quot;7&quot; value=&quot;0adfasdfasdf100&quot;/&gt;&#xd;
+  &lt;field id=&quot;10&quot; value=&quot;0100&quot;/&gt;&#xd;
+  &lt;field id=&quot;20&quot; value=&quot;0adfasdfasdf100&quot;/&gt;&#xd;
+  &lt;field id=&quot;39&quot; value=&quot;0100&quot;/&gt;&#xd;
+  &lt;field id=&quot;24&quot; value=&quot;0adfasdfasdf100 RUS&quot;/&gt;&#xd;
+  &lt;field id=&quot;66&quot; value=&quot;0100&quot;/&gt;&#xd;
+  &lt;field id=&quot;76&quot; value=&quot;0adfasdfasdf100 РУС&quot;/&gt;&#xd;
+  &lt;field id=&quot;464&quot; value=&quot;0100&quot;/&gt;&#xd;
+  &lt;field id=&quot;345&quot; value=&quot;0adfasdfasdf100&quot;/&gt;&#xd;
+  &lt;field id=&quot;55&quot; value=&quot;0100ff as&quot;/&gt;&#xd;
+  &lt;field id=&quot;66550&quot;&gt;&#xd;
+  	  &lt;field id=&quot;51&quot; value=&quot;0100ff as&quot;/&gt;&#xd;
+  	  &lt;field id=&quot;52&quot; value=&quot;0100ff as&quot;/&gt;&#xd;
+  	  &lt;field id=&quot;54&quot; value=&quot;0100ff as&quot;/&gt;&#xd;
+  &lt;/field&gt;&#xd;
+  &lt;field id=&quot;29&quot; value=&quot;0adfasdfasdf100 фывафывафывафывафываasdfasdfasdfasfd asdfasd asd&quot;/&gt;&#xd;
+  &lt;field id=&quot;345&quot; value=&quot;0adfasdfasdf100&quot;/&gt;&#xd;
+  &lt;field id=&quot;55&quot; value=&quot;0100ff as&quot;/&gt;&#xd;
+  &lt;field id=&quot;29&quot; value=&quot;0adfasdfasdf100 фывафывафывафывафываasdfasdfasdfasfd asdfasd asd&quot;/&gt;&#xd;
+  &lt;field id=&quot;550&quot;&gt;&#xd;
+  	  &lt;field id=&quot;55&quot; value=&quot;0100ff as&quot;/&gt;&#xd;
+  	  &lt;field id=&quot;55&quot; value=&quot;0100ff as&quot;/&gt;&#xd;
+  	  &lt;field id=&quot;55&quot; value=&quot;0100ff as&quot;/&gt;&#xd;
+  &lt;/field&gt;&#xd;
+&lt;/msg&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/load/test/xml-request-msg</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>

@@ -1,13 +1,9 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.1.RELEASE'
-//        springBootVersion = '2.0.2.BUILD-SNAPSHOT'
+        springBootVersion = '2.0.2.RELEASE'
     }
     repositories {
         mavenCentral()
-//        maven {
-//            url 'https://repo.spring.io/libs-snapshot'
-//        }
     }
 
     dependencies {
@@ -39,7 +35,6 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('io.projectreactor:reactor-test')
 }
-// need for xml RequestBody (fixed bug in 5.0.6)
-ext['spring.version'] = '5.0.6.RELEASE'
+
 
 

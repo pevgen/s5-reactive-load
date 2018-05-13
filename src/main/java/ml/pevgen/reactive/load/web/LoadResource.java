@@ -2,11 +2,13 @@ package ml.pevgen.reactive.load.web;
 
 import io.micrometer.core.annotation.Timed;
 import ml.pevgen.reactive.load.dto.XmlRequest;
+import ml.pevgen.reactive.load.dto.XmlRequestMsg;
 import ml.pevgen.reactive.load.dto.XmlResponse;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 @RestController
@@ -49,5 +51,11 @@ public class LoadResource {
         return Mono.just(response);
     }
 
-
+    @PostMapping(value = "/test/xml-request-msg", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
+    public Mono<XmlResponse> testPostXmlMsg(@RequestBody XmlRequestMsg request) {
+        XmlResponse response = new XmlResponse();
+        response.setId(request.getField().toString());
+        response.setName("name:" + LocalDateTime.now());
+        return Mono.just(response).delaySubscription(Duration.ofMillis(3000));
+    }
 }
