@@ -4,6 +4,7 @@ import io.micrometer.core.annotation.Timed;
 import ml.pevgen.reactive.load.dto.XmlRequest;
 import ml.pevgen.reactive.load.dto.XmlRequestMsg;
 import ml.pevgen.reactive.load.dto.XmlResponse;
+import ml.pevgen.reactive.load.publisher.MessagePublisher;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
@@ -20,6 +21,13 @@ public class LoadResource {
     public Mono<String> testGetPlain() {
         return Mono.just("current time:" + LocalDateTime.now());
     }
+
+    @GetMapping("/test-delay")
+    public Mono<String> testGetPlainWithDelay() throws InterruptedException {
+        Thread.sleep(3000);
+        return Mono.just("current time:" + LocalDateTime.now());
+    }
+
 
     @PostMapping(value = "/test", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
     public Mono<String> testPostPlain() {
@@ -39,8 +47,8 @@ public class LoadResource {
      * Example of request
      *
      * <xmlRequest>
-     *   <id>id:2018-05-09T10:06:59.809</id>
-     *   <name>name:2018-05-09T10:06:59.809</name>
+     * <id>id:2018-05-09T10:06:59.809</id>
+     * <name>name:2018-05-09T10:06:59.809</name>
      * </xmlRequest>
      */
     @PostMapping(value = "/test/xml-request", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
@@ -50,6 +58,13 @@ public class LoadResource {
         response.setName("name:" + LocalDateTime.now());
         return Mono.just(response);
     }
+
+
+    @GetMapping("/test-publisher")
+    public Mono<String> testGetPublisher() {
+        return MessagePublisher.ff("" + LocalDateTime.now());
+    }
+
 
     @PostMapping(value = "/test/xml-request-msg", consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
     public Mono<XmlResponse> testPostXmlMsg(@RequestBody XmlRequestMsg request) {
